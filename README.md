@@ -1,3 +1,7 @@
+# fork declare
+
+This package is a fork from 
+
 # Ollama for Dart
 
 A Dart client for interacting with the Ollama API. This library provides an easy-to-use interface for generating text completions, chat responses, and embeddings using Ollama inference engine.
