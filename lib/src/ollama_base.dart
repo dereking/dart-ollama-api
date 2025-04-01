@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:ollama/src/models/message.dart';
-import 'package:ollama/src/models/completion.dart';
-import 'package:ollama/src/models/parameters.dart';
+import 'models/message.dart';
+import 'models/completion.dart';
+import 'models/parameters.dart';
 
 class Ollama {
   /// The base URL for the Ollama API.
@@ -110,9 +110,16 @@ class Ollama {
 
     final response = await request.close();
 
-    await for (final chunk in response.transform(utf8.decoder)) {
-      final json = jsonDecode(chunk);
-      yield CompletionChunk.fromJson(json);
+    await for (final chunk in response.transform(utf8.decoder)) { 
+      // Split the chunk into lines and process each line
+      for (final line in chunk.split('\n')) { 
+        // Print the line number and the line content  
+        // Check if the line is not empty
+        if (line.isNotEmpty) {  
+          final json = jsonDecode(line);
+          yield CompletionChunk.fromJson(json);
+        }
+      }
     }
   }
 
