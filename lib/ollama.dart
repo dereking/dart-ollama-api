@@ -1,7 +1,7 @@
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
-library ollama;
+library ollama_dart;
 
 /// The base class for the Ollama API.
 export 'src/ollama_base.dart';
